@@ -35,14 +35,14 @@ def branchTag() {
     return "${env.BRANCH_NAME}"
 }
 
-// Map of environment settings.  Used for deployment
+
 def envMap() {
     [
       'dev' : [context: 'dev.sspcloudpro.co.in', namespace: 'dev', branch: 'develop', cluster: 'dev.sspcloudpro.co.in', url: 'dev.sspcloudpro.co.in']
     ]
 }
 
-// Changes to these branches are automatically deployed (CI/CD)
+
 def branchMap(branch) {
     def bMap = [
           develop: ['dev'],
@@ -56,7 +56,7 @@ def branchMap(branch) {
 def deploymentUpdateArtisanMobileBff(context, namespace, newVersion) {
     def cmd = "kubectl set image deployment/ssp-nodejs-deployment ssp-nodejs-deployment=${newVersion} --context=${context} --namespace=${namespace}"
 
-  //  sh "delivery/pearl-squad/artisan-mobile-bff/env/reload-secret.sh ${namespace} ${context}"
+
 
     sh cmd
 }
